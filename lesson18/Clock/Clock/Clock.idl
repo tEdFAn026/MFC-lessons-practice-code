@@ -1,0 +1,57 @@
+// Clock.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (Clock.tlb) that will become a resource in
+// Clock.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(4FD2DA21-84C2-4AC7-BED4-97578006CB3B), version(1.0),
+  control ]
+library ClockLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CClockCtrl
+	[ 
+		uuid(F78DF301-071B-4531-A5F3-DC42DFDFE898)	
+	]
+	dispinterface _DClock
+	{
+		properties:
+			[id(DISPID_BACKCOLOR), bindable, requestedit] OLE_COLOR BackColor;
+			[id(DISPID_FORECOLOR)] OLE_COLOR ForeColor;
+			[id(1)] SHORT Interval;
+	methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(2)] void Hello();
+	};
+
+	//  Event dispatch interface for CClockCtrl
+
+	[ 
+		uuid(600C57C4-E86C-4D40-9344-766C852817DC)	
+	]
+	dispinterface _DClockEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			[id(DISPID_CLICK)] void Click();
+			[id(1)] void NewMinute();
+	};
+
+	//  Class information for CClockCtrl
+	[
+		uuid(ED3DB106-F475-49E8-B01D-0DC50470AD45)
+	]
+	coclass Clock
+	{
+		[default] dispinterface _DClock;
+		[default, source] dispinterface _DClockEvents;
+	};
+
+};

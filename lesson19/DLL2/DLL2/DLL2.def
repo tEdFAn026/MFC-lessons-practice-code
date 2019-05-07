@@ -1,0 +1,5 @@
+LIBRARY DLLL2
+
+EXPORTS
+add
+subtract
